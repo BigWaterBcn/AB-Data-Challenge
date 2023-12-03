@@ -6,7 +6,7 @@ import numpy as np
 # Load the trained model
 @st.cache_data
 def load_model():
-    model = joblib.load('./Household winter Categorizer.joblib')
+    model = joblib.load('./classifier.joblib')
     return model
 
 model = load_model()
