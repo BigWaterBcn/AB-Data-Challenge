@@ -87,8 +87,12 @@ if uploaded_file is not None:
     st.header('Patró de consum horari')
     st.area_chart(pattern_plot.set_index('Hour'))
 
-    predictions = model.predict(processed_hourly_data)
-    st.write("This house belongs to the category", predictions[0])
+    if data['Ús/Uso/Use'].iloc[0] == 'Domèstic/Doméstico/Domestic':
+
+        # Run model prediction
+        predictions = model.predict(processed_hourly_data)
+        st.write("This house belongs to the category", predictions[0])
+
 
     # Preparing to plot the original data
     original_data['Data/Fecha/Date'] = pd.to_datetime(original_data['Data/Fecha/Date'])
