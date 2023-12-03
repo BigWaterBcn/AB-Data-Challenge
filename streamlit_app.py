@@ -91,7 +91,18 @@ if uploaded_file is not None:
 
         # Run model prediction
         predictions = model.predict(processed_hourly_data)
-        st.write("This house belongs to the category", predictions[0])
+        
+        # Descriptions for each cluster
+        cluster_descriptions = {
+            0: "Aquesta casa pertany a la categoria de consum moderat. Estàs fent un bon treball, però hi ha oportunitats per ser més eficient. Considereu instal·lar aerators en les aixetes i comproveu els electrodomèstics per assegurar-se que són eficients.",
+            1: "Aquesta casa pertany a la categoria de consum baix. Felicitats per mantenir un ús responsable de l'aigua! Per millorar encara més, considereu revisar regularment per fuites i utilitzar dispositius que estalviïn aigua.",
+            2: "Aquesta casa pertany a la categoria de consum variable. El teu ús de l'aigua fluctua, indicant possibles àrees per a la millora. Penseu en ajustar els horaris de reg i optimitzeu l'ús dels electrodomèstics.",
+            3: "Aquesta casa pertany a la categoria de consum alt. És important considerar maneres de reduir aquest consum, com ara limitar la durada de les dutxes, invertir en electrodomèstics d'alta eficiència, i recollir aigua de pluja per a ús no potable."
+        }
+        
+        # Get the appropriate description based on the prediction
+        cluster_description = cluster_descriptions.get(predictions[0], "Informació no disponible per aquesta categoria.")
+        st.write(cluster_description)
 
 
     # Preparing to plot the original data
