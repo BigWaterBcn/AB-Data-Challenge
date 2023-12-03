@@ -141,11 +141,11 @@ if uploaded_file is not None:
     potential_leaks = detect_leaks(original_data, processed_hourly_data, window_size=3)
     
     if potential_leaks.size > 0:
-        st.subheader("Em trobat potencials fuites els dies:")
+        st.subheader("Hem trobat potencials fuites els dies:")
         for date in potential_leaks:
             st.write(f"- {date.strftime('%Y-%m-%d')}")
     else:
-        st.write("No em trobat cap consum sospitos de ser una fuita")
+        st.write("No hem trobat cap consum sospitos de ser una fuita")
 
 
    
